@@ -27,4 +27,11 @@ class Game {
         this.activePhrase = this.getRandomPhrase();//call getRandomPhrase() by storing it in this.activePhrase 
         this.activePhrase.addPhraseToDisplay(); //add phrase to the gameboard
     };
+    handleInteraction(){
+
+    };
+    checkForWin(){};
+    removeLife(){};
+    gameOver(){};
 };
+
