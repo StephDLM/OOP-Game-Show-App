@@ -31,7 +31,7 @@ class Phrase {
     };
     showMatchedLetter(letter){
         //select all of the letter DOM elements that have a CSS class name that match the selected letter
-        let revealLetter = document.querySelectorAll("#phrase ul");
+        let revealLetter = document.querySelectorAll("ul");
     
     };
 };
