@@ -47,3 +47,4 @@ startButton.addEventListener( "click", () => {
     //call the game to start 
     game.startGame();
 });
+
