@@ -65,8 +65,7 @@ class Game {
             endOverlay.className = "win";
         } else if (gameWon === false){
             document.getElementById("game-over-message").innerHTML = "That's not quite right, play again!";
-            endOverlay.className = "loose";
-
+            endOverlay.className = "lose";
         }
 };
     handleInteraction(){};
