@@ -52,7 +52,7 @@ const qwerty = document.getElementById("qwerty");
 qwerty.addEventListener( "click", (e) =>{
     console.log(e.target);
     if (e.target.tagName === "BUTTON") {
-        game.handlerInteraction();
+        // game.handlerInteraction(button);
     }
 
 })

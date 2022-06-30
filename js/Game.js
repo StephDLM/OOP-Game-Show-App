@@ -68,6 +68,15 @@ class Game {
             endOverlay.className = "lose";
         }
 };
-    handleInteraction(){};
+    handleInteraction(){
+        var key =  document.getElementsByClassName(".key");
+        if (this.missed === 0){
+          key.className = "chosen";
+          showMatchedLetter();
+        } else {
+            key.className = "wrong";
+            removeLife();
+        }
+    };
 };
 
