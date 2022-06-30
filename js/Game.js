@@ -43,7 +43,7 @@ class Game {
 //select all images and store it in images
         const images = document.querySelectorAll("img");
 //create if then statement to replace liveHeart with lostHeart when player misses, up to 4 times
-            if (this.missed<4){ 
+            if (this.missed < 4){ 
                 images[this.missed].src = "images/lostHeart.png";
 //when a letter is missed, add 1 (all the way up to 4)
                 this.missed += 1
@@ -58,14 +58,14 @@ class Game {
  */
     gameOver(gameWon){
         const endOverlay = document.getElementById("overlay");
-        endOverlay.style.display = " ";        
+        endOverlay.style.display = "block";        
     //create an if-else statement that shows if the player got the letters right, show "you won", or "you lost"
-        if (this.gameWon){
-            document.getElementById("game-over-message").innerHTML = "Congratulations, you've won!"
-            endOverlay.className.add("win");
-        } else {
-            document.getElementById("game-over-message").innerHTML = "That's not quite right, play again!"
-            endOverlay.className.add("loose");
+        if (gameWon === true){
+            document.getElementById("game-over-message").innerHTML = "Congratulations, you've won!";
+            endOverlay.className = "win";
+        } else if (gameWon === false){
+            document.getElementById("game-over-message").innerHTML = "That's not quite right, play again!";
+            endOverlay.className = "loose";
 
         }
 };

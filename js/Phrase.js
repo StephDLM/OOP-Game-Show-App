@@ -31,7 +31,8 @@ class Phrase {
     };
     showMatchedLetter(letter){
         //select all of the letter DOM elements that have a CSS class name that match the selected letter
-        let revealLetter = document.querySelectorAll(`.${letter}`); 
+        let revealLetter = document.querySelectorAll("li"); 
+        // console.log("revealLetter: ", revealLetter);
         //create a for loop that iterates over the letters to see if the letter matches one of the phrases by using classList attributes
         for (let i=0; i<revealLetter.length; i++){
             if (revealLetter[i].textContent === letter){
@@ -39,7 +40,7 @@ class Phrase {
                 revealLetter[i].classList.remove("hide");
             }
         };
-    
+
     };
 };
 
