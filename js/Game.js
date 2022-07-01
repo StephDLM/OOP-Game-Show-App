@@ -72,7 +72,7 @@ class Game {
     handleInteraction(button){
         button.disabled = true;
         // const click = button.target
-        let key = button.target.innerText;
+        let key = button.innerText;
     //disable button once clicked
     //create a method to show which button is clicked
     if (this.activePhrase.checkLetter(key) === true){
