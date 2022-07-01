@@ -24,7 +24,7 @@ class Game {
     startGame(){
         const startOverlay = document.getElementById("overlay");
         startOverlay.style.display = "none";
-        this.activePhrase = this.getRandomPhrase();//call getRandomPhrase() by storing it in this.activePhrase 
+        this.activePhrase = new Phrase(this.getRandomPhrase().phrase);//call getRandomPhrase() by storing it in this.activePhrase 
         this.activePhrase.addPhraseToDisplay(); //add phrase to the gameboard
     };
    //check for winning move @return {boolean} True if game has been won, false if game wasn't won 
@@ -48,7 +48,7 @@ class Game {
             if (this.missed < 4){ 
                 images[this.missed].src = "images/lostHeart.png";
                 this.missed += 1;
-//when when 4 or more hearts are lost, game over
+//when when 5 or more hearts are lost, game over
             } else if (this.missed === 4) {
                 this.gameOver(false);
                         }
@@ -69,29 +69,46 @@ class Game {
             document.getElementById("game-over-message").innerHTML = "That's not quite right, play again!";
             endOverlay.className = ("lose");
         }
-};
+    };
     handleInteraction(button){
         button.disabled = true;
         // const click = button.target
         let key = button.innerText;
     //disable button once clicked
-    //create a method to show which button is clicked
+    //create a method to activate the clicked button to check if chosen letter matches phrase
     if (this.activePhrase.checkLetter(key) === true){
         this.activePhrase.showMatchedLetter(key);
         button.classList.add("chosen");
         if (this.checkForWin() === true ){ 
             this.gameOver(true) 
-        } 
+        }
         } else {
             button.classList.add("wrong");
             this.removeLife();
         }
+    };
+    resetGame(){
+        let buttons = document.querySelectorAll(".key")//select the class "key"
+        // let phrase = document.getElementById("phrase"); //select the phrase given
+        // let ul = document.querySelectorAll("ul");
+    //reset all heart images by using a forEach loop
+    //foreach loop to enable all onscreen buttons and update all to use the "key" css class
+     //removing the "li" elements using the chosen and wrong keys 
 
-    //     } else if (this.checkForWin() === false ){
-    //      this.gameOver(false)
-    //     };
+    buttons.forEach(button => {
+        button.classList.remove("chosen");
+        button.classList.remove("wrong");
+        button.classList.add("key");
+        button.disabled = false;
+    })
+    console.log(buttons);
+    const images = document.querySelectorAll("img");
+    images.forEach (heart =>
+        heart.src = "images/liveHeart.png"
+        );
     };
 };
 
-// resetGame()
+
+
 

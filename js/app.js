@@ -41,22 +41,44 @@
 //Start Game Event Listener
 var game;
 const startButton = document.getElementById("btn__reset");
-startButton.addEventListener( "click", () => {
+startButton.addEventListener( "click", function() {
     game = new Game;    //use game variable to instantiate a new Game object
+    game.resetGame();
     game.startGame(); //call the startGame method with new game to start
 
 });
 
 const qwerty = document.getElementById("qwerty");
-
 qwerty.addEventListener( "click", (e) => {
     if (e.target.tagName === "BUTTON") {
         game.handleInteraction(e.target);
     }
     console.log(e.target)
 }
-
-    // e.target.tagName === "BUTTON"       
 );
+// const buttons = document.querySelectorAll('.key');
+//     buttons.forEach( button => {
+//         button.addEventListener ("click", function() {
+//             game.handleInteraction(this);
+//         } )
+//     }
+//         )
 
 
+
+
+
+
+
+
+
+
+
+// qwerty.addEventListener( "click", (e) => {
+//     if (e.target.tagName === "BUTTON") {
+//         game.handleInteraction(e.target);
+//     }
+//     console.log(e.target)
+// }
+//     // e.target.tagName === "BUTTON"       
+// );
