@@ -49,10 +49,9 @@ startButton.addEventListener( "click", () => {
 });
 
 const qwerty = document.getElementById("qwerty");
-qwerty.addEventListener( "click", (e) =>{
-    console.log(e.target);
-    if (e.target.tagName === "BUTTON") {
-        // game.handlerInteraction(button);
-    }
+qwerty.addEventListener( "click", e => {game.handleInteraction(e)
+    // console.log(e.target)
+}
 
-})
+    // e.target.tagName === "BUTTON"       
+);

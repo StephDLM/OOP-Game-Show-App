@@ -68,15 +68,28 @@ class Game {
             endOverlay.className = "lose";
         }
 };
-    handleInteraction(){
-        var key =  document.getElementsByClassName(".key");
-        if (this.missed === 0){
-          key.className = "chosen";
-          showMatchedLetter();
+    handleInteraction(button){
+        const click = button.target
+        let key = button.target.innerText;
+    //disable button once clicked
+        // button.disabled = true;
+    //create a method to show which button is clicked
+    if (this.activePhrase.checkLetter(key) === true){
+        button.disabled = true;
+          button.className = "chosen";
+          this.activePhrase.showMatchedLetter(key);
+          this.checkForWin();
+        
         } else {
-            key.className = "wrong";
-            removeLife();
+            button.disabled = true;
+            button.className = "wrong";
+            this.removeLife();
+        }
+        if (this.checkForWin() === true) {
+            game.Over(true);
         }
     };
 };
+
+// resetGame()
 
