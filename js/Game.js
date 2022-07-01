@@ -30,7 +30,9 @@ class Game {
    //check for winning move @return {boolean} True if game has been won, false if game wasn't won 
     checkForWin(){
     //select the class hide 
-        const hidden = document.querySelector(".hide");
+        const hidden = document.querySelectorAll(".hide");
+        console.log(hidden);
+        console.log(hidden.length);
         if (hidden.length === 0){
             return true
         } else {
@@ -45,11 +47,10 @@ class Game {
 //create if then statement to replace liveHeart with lostHeart when player misses, up to 4 times
             if (this.missed < 4){ 
                 images[this.missed].src = "images/lostHeart.png";
-                this.missed += 1
-
-//when a letter is missed, add 1 (all the way up to 4)
-            } else if (this.missed >= 5) {
-                this,gameOver(false)
+                this.missed += 1;
+//when when 4 or more hearts are lost, game over
+            } else if (this.missed === 4) {
+                this.gameOver(false);
                         }
     };
 
@@ -77,13 +78,12 @@ class Game {
     //create a method to show which button is clicked
     if (this.activePhrase.checkLetter(key) === true){
         this.activePhrase.showMatchedLetter(key);
+        button.classList.add("chosen");
         if (this.checkForWin() === true ){ 
-            this.gameOver(true) }
-        // button.disabled = true;
-        button.className = "chosen";
+            this.gameOver(true) 
+        } 
         } else {
-            // button.disabled = true;
-            button.className = "wrong";
+            button.classList.add("wrong");
             this.removeLife();
         }
 
