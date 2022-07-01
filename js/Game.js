@@ -14,12 +14,12 @@ class Game {
             new Phrase("Fall equinox is a great cocktail")
         ];
         this.activePhrase = "null";
-      }
+      };
 //create a method to select random phrase from phrases property
     getRandomPhrase() {
         const selectedPhrase = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[selectedPhrase];
-    }
+    };
 //create a method that hides screed overlay
     startGame(){
         const startOverlay = document.getElementById("overlay");
@@ -45,11 +45,12 @@ class Game {
 //create if then statement to replace liveHeart with lostHeart when player misses, up to 4 times
             if (this.missed < 4){ 
                 images[this.missed].src = "images/lostHeart.png";
-//when a letter is missed, add 1 (all the way up to 4)
                 this.missed += 1
-            } else {
-                this.gameOver();
-            }
+
+//when a letter is missed, add 1 (all the way up to 4)
+            } else if (this.missed >= 5) {
+                this,gameOver(false)
+                        }
     };
 
 /**
@@ -62,32 +63,33 @@ class Game {
     //create an if-else statement that shows if the player got the letters right, show "you won", or "you lost"
         if (gameWon === true){
             document.getElementById("game-over-message").innerHTML = "Congratulations, you've won!";
-            endOverlay.className = "win";
+            endOverlay.className = ("win");
         } else if (gameWon === false){
             document.getElementById("game-over-message").innerHTML = "That's not quite right, play again!";
-            endOverlay.className = "lose";
+            endOverlay.className = ("lose");
         }
 };
     handleInteraction(button){
-        const click = button.target
+        button.disabled = true;
+        // const click = button.target
         let key = button.target.innerText;
     //disable button once clicked
-        // button.disabled = true;
     //create a method to show which button is clicked
     if (this.activePhrase.checkLetter(key) === true){
-        button.disabled = true;
-          button.className = "chosen";
-          this.activePhrase.showMatchedLetter(key);
-          this.checkForWin();
-        
+        this.activePhrase.showMatchedLetter(key);
+        if (this.checkForWin() === true ){ 
+            this.gameOver(true) }
+        // button.disabled = true;
+        button.className = "chosen";
         } else {
-            button.disabled = true;
+            // button.disabled = true;
             button.className = "wrong";
             this.removeLife();
         }
-        if (this.checkForWin() === true) {
-            game.Over(true);
-        }
+
+    //     } else if (this.checkForWin() === false ){
+    //      this.gameOver(false)
+    //     };
     };
 };
 
