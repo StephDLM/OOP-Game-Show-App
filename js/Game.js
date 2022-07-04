@@ -89,12 +89,18 @@ class Game {
     };
     resetGame(){
         let buttons = document.querySelectorAll(".key")//select the class "key"
-        // let phrase = document.getElementById("phrase"); //select the phrase given
-        // let ul = document.querySelectorAll("ul");
-    //reset all heart images by using a forEach loop
-    //foreach loop to enable all onscreen buttons and update all to use the "key" css class
-     //removing the "li" elements using the chosen and wrong keys 
+ //target all the list items within the div#phrase element's ul element
+        const phrase = document.getElementById("phrase")//select the phrase given
+        const ul = phrase.querySelector('ul');
+// loop through them and deleting each list item one by one
+        for (let i=0; i<phrase.length; i++) {
+            phrase.querySelectorAll("ul").innerHTML = ""; //removes previous ul 
+        };
 
+/* 
+use a foreach loop to enable all onscreen buttons and update all to use the "key" 
+css class and remove the "li" elements using the chosen and wrong keys 
+*/
     buttons.forEach(button => {
         button.classList.remove("chosen");
         button.classList.remove("wrong");
@@ -102,6 +108,8 @@ class Game {
         button.disabled = false;
     })
     console.log(buttons);
+
+    //reset all heart images by using a forEach loop
     const images = document.querySelectorAll("img");
     images.forEach (heart =>
         heart.src = "images/liveHeart.png"
