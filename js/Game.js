@@ -15,12 +15,12 @@ class Game {
         ];
         this.activePhrase = "null";
       };
-//create a method to select random phrase from phrases property
+    //create a method to select random phrase from phrases property
     getRandomPhrase() {
         const selectedPhrase = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[selectedPhrase];
     };
-//create a method that hides screed overlay
+    //create a method that hides screed overlay
     startGame(){
         const startOverlay = document.getElementById("overlay");
         startOverlay.style.display = "none";
@@ -39,16 +39,16 @@ class Game {
             return false
         }
     };
-//Increase value of the missed property and removes a life from the scoreboard 
-//check if player has remaining life and ends game if player is out 
+    //Increase value of the missed property and removes a life from the scoreboard 
+    //check if player has remaining life and ends game if player is out 
     removeLife(){
-//select all images and store it in images
+    //select all images and store it in images
         const images = document.querySelectorAll("img");
-//create if then statement to replace liveHeart with lostHeart when player misses, up to 4 times
+    //create if then statement to replace liveHeart with lostHeart when player misses, up to 4 times
             if (this.missed < 4){ 
                 images[this.missed].src = "images/lostHeart.png";
                 this.missed += 1;
-//when when 5 or more hearts are lost, game over
+    //when when 5 or more hearts are lost, game over
             } else if (this.missed === 4) {
                 this.gameOver(false);
                         }
@@ -60,7 +60,7 @@ class Game {
  */
     gameOver(gameWon){
         const endOverlay = document.getElementById("overlay");
-        endOverlay.style.display = "block";        
+        endOverlay.style.display = "";        
     //create an if-else statement that shows if the player got the letters right, show "you won", or "you lost"
         if (gameWon === true){
             document.getElementById("game-over-message").innerHTML = "Congratulations, you've won!";
@@ -70,6 +70,7 @@ class Game {
             endOverlay.className = ("lose");
         }
     };
+
     handleInteraction(button){
         button.disabled = true;
         // const click = button.target
@@ -87,20 +88,17 @@ class Game {
             this.removeLife();
         }
     };
+
     resetGame(){
         let buttons = document.querySelectorAll(".key")//select the class "key"
- //target all the list items within the div#phrase element's ul element
+    //target all the list items within the div#phrase element's ul element
         const phrase = document.getElementById("phrase")//select the phrase given
-        const ul = phrase.querySelector('ul');
-// loop through them and deleting each list item one by one
-        for (let i=0; i<phrase.length; i++) {
-            phrase.querySelectorAll("ul").innerHTML = ""; //removes previous ul 
-        };
-
-/* 
-use a foreach loop to enable all onscreen buttons and update all to use the "key" 
-css class and remove the "li" elements using the chosen and wrong keys 
-*/
+        const ul = phrase.querySelector('ul'); //select the ul in the phrase id 
+        ul.innerHTML= "" // will clear all of the ul elements 
+    /* 
+    use a foreach loop to enable all onscreen buttons and update all to use the "key" 
+    css class and remove the "li" elements using the chosen and wrong keys 
+    */
     buttons.forEach(button => {
         button.classList.remove("chosen");
         button.classList.remove("wrong");

@@ -48,21 +48,14 @@ startButton.addEventListener( "click", function() {
 
 });
 
+//select the keyboard and create an event listener for it every time you click a keyboard button
 const qwerty = document.getElementById("qwerty");
 qwerty.addEventListener( "click", (e) => {
     if (e.target.tagName === "BUTTON") {
         game.handleInteraction(e.target);
     }
-    console.log(e.target)
 }
 );
-// const buttons = document.querySelectorAll('.key');
-//     buttons.forEach( button => {
-//         button.addEventListener ("click", function() {
-//             game.handleInteraction(this);
-//         } )
-//     }
-//         )
 
 
 
@@ -74,11 +67,4 @@ qwerty.addEventListener( "click", (e) => {
 
 
 
-// qwerty.addEventListener( "click", (e) => {
-//     if (e.target.tagName === "BUTTON") {
-//         game.handleInteraction(e.target);
-//     }
-//     console.log(e.target)
-// }
-//     // e.target.tagName === "BUTTON"       
-// );
+
