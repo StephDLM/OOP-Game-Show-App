@@ -13,18 +13,18 @@ class Game {
             new Phrase("tis a brumal night"),
             new Phrase("Fall equinox is a great cocktail")
         ];
-        this.activePhrase = "null";
+        this.activePhrase = null;
       };
     //create a method to select random phrase from phrases property
     getRandomPhrase() {
         const selectedPhrase = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[selectedPhrase];
     };
-    //create a method that hides screed overlay
+    //create a method that hides screed overlay 
     startGame(){
-        const startOverlay = document.getElementById("overlay");
+        const startOverlay = document.getElementById("overlay");//select the overlay Id hide the display
         startOverlay.style.display = "none";
-        this.activePhrase = new Phrase(this.getRandomPhrase().phrase);//call getRandomPhrase() by storing it in this.activePhrase 
+        this.activePhrase = this.getRandomPhrase()//call getRandomPhrase() by storing it in this.activePhrase 
         this.activePhrase.addPhraseToDisplay(); //add phrase to the gameboard
     };
    //check for winning move @return {boolean} True if game has been won, false if game wasn't won 
